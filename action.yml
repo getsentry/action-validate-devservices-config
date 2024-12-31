@@ -1,10 +1,11 @@
 name: 'devservices setup'
 description: 'Sets up devservices and validates the configuration for a given service.'
 
+env:
+  DISABLE_SENTRY: 1
+
 runs:
   using: 'composite'
-  env:
-    DISABLE_SENTRY: 1
   steps:
     - uses: getsentry/action-setup-venv@v2.1.0
       id: venv
