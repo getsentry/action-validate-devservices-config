@@ -1,0 +1,38 @@
+name: 'devservices setup'
+description: 'Sets up devservices and validates the configuration for a given service.'
+
+runs:
+  using: 'composite'
+  steps:
+    - uses: getsentry/action-setup-venv@v2.1.0
+      id: venv
+      with:
+        python-version: 3.12
+        cache-dependency-path: |
+          requirements.txt
+          requirements-frozen.txt
+        install-cmd: pip install -r requirements.txt -c requirements-frozen.txt
+
+    - name: 'Check for devservices config file'
+      run: |
+        if [ ! -f config/devservices.yml ]; then
+          echo "config/devservices.yml not found."
+          exit 1
+        else
+          echo "config/devservices.yml found!"
+        fi
+
+    - name: 'Run devservices in default mode'
+      run: devservices up
+
+    - name: 'Run devservices status'
+      run: devservices status
+
+    - name: 'Run devservices list-dependencies'
+      run: devservices list-dependencies
+
+    - name: 'Run devservices logs'
+      run: devservices logs
+
+    - name: 'Run devservices down'
+      run: devservices down
