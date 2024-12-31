@@ -10,17 +10,6 @@ runs:
         python-version: 3.12
         install-cmd: pip install devservices>=1.0.7
 
-    - name: 'Check for devservices config file'
-      shell: bash
-      run: |
-        ls
-        if [ ! -f devservices/config.yml ]; then
-          echo "devservices/config.yml not found."
-          exit 1
-        else
-          echo "devservices/config.yml found!"
-        fi
-
     - name: 'Run devservices in default mode'
       shell: bash
       run: devservices up
