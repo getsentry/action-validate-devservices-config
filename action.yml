@@ -13,11 +13,11 @@ runs:
     - name: 'Check for devservices config file'
       shell: bash
       run: |
-        if [ ! -f config/devservices.yml ]; then
-          echo "config/devservices.yml not found."
+        if [ ! -f devservices/config.yml ]; then
+          echo "devservices/config.yml not found."
           exit 1
         else
-          echo "config/devservices.yml found!"
+          echo "devservices/config.yml found!"
         fi
 
     - name: 'Run devservices in default mode'
