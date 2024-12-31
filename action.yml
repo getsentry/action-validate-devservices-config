@@ -14,6 +14,7 @@ runs:
         install-cmd: pip install -r requirements.txt -c requirements-frozen.txt
 
     - name: 'Check for devservices config file'
+      shell: bash
       run: |
         if [ ! -f config/devservices.yml ]; then
           echo "config/devservices.yml not found."
@@ -23,16 +24,21 @@ runs:
         fi
 
     - name: 'Run devservices in default mode'
+      shell: bash
       run: devservices up
 
     - name: 'Run devservices status'
+      shell: bash
       run: devservices status
 
     - name: 'Run devservices list-dependencies'
+      shell: bash
       run: devservices list-dependencies
 
     - name: 'Run devservices logs'
+      shell: bash
       run: devservices logs
 
     - name: 'Run devservices down'
+      shell: bash
       run: devservices down
