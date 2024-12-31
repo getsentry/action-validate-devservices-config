@@ -13,6 +13,7 @@ runs:
     - name: 'Check for devservices config file'
       shell: bash
       run: |
+        ls
         if [ ! -f devservices/config.yml ]; then
           echo "devservices/config.yml not found."
           exit 1
