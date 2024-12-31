@@ -8,10 +8,8 @@ runs:
       id: venv
       with:
         python-version: 3.12
-        cache-dependency-path: |
-          requirements.txt
-          requirements-frozen.txt
-        install-cmd: pip install -r requirements.txt -c requirements-frozen.txt
+        cache-dependency-path: requirements.txt
+        install-cmd: pip install -r requirements.txt
 
     - name: 'Check for devservices config file'
       shell: bash
