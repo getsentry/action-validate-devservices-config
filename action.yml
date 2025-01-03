@@ -11,7 +11,7 @@ runs:
       id: venv
       with:
         python-version: 3.12
-        install-cmd: pip install devservices>=1.0.7 packaging
+        install-cmd: pip install devservices>=1.0.8
 
     - name: 'Run devservices in default mode'
       shell: bash
