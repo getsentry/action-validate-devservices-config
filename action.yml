@@ -8,6 +8,9 @@ inputs:
 env:
   DISABLE_SENTRY: 1
 
+env:
+  DISABLE_SENTRY: 1
+
 runs:
   using: 'composite'
   steps:
