@@ -15,7 +15,7 @@ env:
 runs:
   using: 'composite'
   steps:
-    - uses: getsentry/action-setup-venv@a133e6fd5fa6abd3f590a1c106abda344f5df69f
+    - uses: getsentry/action-setup-venv@3a832a9604b3e1a4202ae559248f26867b467cc7 #v2.1.1
       id: venv
       with:
         python-version: ${{ inputs.python-version }}
