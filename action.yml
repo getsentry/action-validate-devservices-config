@@ -21,14 +21,12 @@ runs:
         # we just cache the venv-dir directly in action-setup-venv
         enable-cache: false
 
-    - run: echo "devservices==${{ inputs.devservices-version }}" > requirements.txt
-
     - uses: getsentry/action-setup-venv@3a832a9604b3e1a4202ae559248f26867b467cc7 # v2.1.1
       id: venv
       with:
         python-version: ${{ inputs.python-version }}
-        cache-dependency-path: requirements.txt
-        install-cmd: uv pip install -r requirements.txt
+        cache-dependency-path: ""
+        install-cmd: uv pip install "devservices==${{ inputs.devservices-version }}"
 
     - name: 'Run devservices in default mode'
       shell: bash
