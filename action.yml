@@ -1,8 +1,8 @@
 name: 'devservices setup'
 description: 'Sets up devservices and validates the configuration for a given service.'
 inputs:
-  requirements-file-path:
-    description: 'The path to the requirements.txt file.'
+  devservices-version:
+    description: 'devservices version'
     required: true
   python-version:
     description: 'The python version to run CI with.'
@@ -15,12 +15,18 @@ env:
 runs:
   using: 'composite'
   steps:
-    - uses: getsentry/action-setup-venv@3a832a9604b3e1a4202ae559248f26867b467cc7 #v2.1.1
+    - uses: astral-sh/setup-uv@884ad927a57e558e7a70b92f2bccf9198a4be546 # v6
+      with:
+        version: '0.8.2'
+        # we just cache the venv-dir directly in action-setup-venv
+        enable-cache: false
+
+    - uses: getsentry/action-setup-venv@3a832a9604b3e1a4202ae559248f26867b467cc7 # v2.1.1
       id: venv
       with:
         python-version: ${{ inputs.python-version }}
-        cache-dependency-path: ${{ inputs.requirements-file-path }}
-        install-cmd: pip install -r ${{ inputs.requirements-file-path }}
+        cache-dependency-path: ""
+        install-cmd: uv pip install "devservices==${{ inputs.devservices-version }}"
 
     - name: 'Run devservices in default mode'
       shell: bash
