@@ -6,7 +6,7 @@ inputs:
     required: true
   python-version:
     description: 'The python version to run CI with.'
-    required: true
+    required: false
     default: 3.11
 
 runs:
