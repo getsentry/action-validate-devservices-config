@@ -9,8 +9,8 @@ Example:
   id: get-devservices-version
   run: |
     awk -F'"' '
-      /name/ { pkg = $2 }
-      /version/ { if (pkg == "devservices") print "version="$2 }
+      /^name = / { pkg = $2 }
+      /^version = / && pkg == "devservices" { print "version="$2; exit }
     ' uv.lock >> $GITHUB_OUTPUT
 
 - uses: getsentry/action-validate-devservices-config@711ae7221998ddf81211f25f5e3873ecffd22387
