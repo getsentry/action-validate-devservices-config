@@ -1,4 +1,4 @@
-name: 'devservices setup'
+name: 'Validate devservices config'
 description: 'Sets up devservices and validates the configuration for a given service.'
 inputs:
   devservices-version:
@@ -6,11 +6,8 @@ inputs:
     required: true
   python-version:
     description: 'The python version to run CI with.'
-    required: true
+    required: false
     default: 3.11
-
-env:
-  DISABLE_SENTRY: 1
 
 runs:
   using: 'composite'
@@ -31,19 +28,29 @@ runs:
     - name: 'Run devservices in default mode'
       shell: bash
       run: devservices up
+      env:
+        DEVSERVICES_DISABLE_SENTRY: 1
 
     - name: 'Run devservices status'
       shell: bash
       run: devservices status
+      env:
+        DEVSERVICES_DISABLE_SENTRY: 1
 
     - name: 'Run devservices list-dependencies'
       shell: bash
       run: devservices list-dependencies
+      env:
+        DEVSERVICES_DISABLE_SENTRY: 1
 
     - name: 'Run devservices logs'
       shell: bash
       run: devservices logs
+      env:
+        DEVSERVICES_DISABLE_SENTRY: 1
 
     - name: 'Run devservices down'
       shell: bash
       run: devservices down
+      env:
+        DEVSERVICES_DISABLE_SENTRY: 1
