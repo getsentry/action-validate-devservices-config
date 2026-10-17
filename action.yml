@@ -1,4 +1,4 @@
-name: 'devservices setup'
+name: 'Validate devservices config'
 description: 'Sets up devservices and validates the configuration for a given service.'
 inputs:
   devservices-version:
